@@ -123,9 +123,11 @@ section{
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    max-width: 1000px;
+    margin: 0 auto;
 }
 section i{
-    font-size: 2rem;
+    font-size: 32px;
     color: white;
 }
 
@@ -134,7 +136,7 @@ section i{
     font-weight: bold;
     text-align: end;
     color: white;
-    font-size: 3rem;
+    font-size: 40px;
 }
 footer{
     display: flex;
@@ -165,28 +167,17 @@ button{
 }
 @media screen and (max-width: 768px) {
     section {
-        padding: 40px 20px;
-    }
-    section i {
-        font-size: 20px;
-        line-height: 1.4;
-    }
-    .citation {
-        font-size: 24px;
-        text-align: center;
-        margin-top: 15px;
+        padding: 40px 20px; 
     }
     .quote {
         padding: 20px;
     }
-    row {
-        padding: 20px;
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
+    section i {
+        font-size: 18px; 
+        line-height: 1.5;
     }
-    footer {
-        padding: 50px 20px;
+    .citation { 
+        font-size: 24px; 
+        text-align: center;
     }
 }
-
