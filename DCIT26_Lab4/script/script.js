@@ -18,7 +18,7 @@ document.querySelector('.buttons').addEventListener('click', (e) => {
         try {
             let result = eval(display.value);
 
-            if (!Infinity(result)){
+            if (!isFinite(result)){
                 display.value = "Error"
             }else{
                 display.value = result;
