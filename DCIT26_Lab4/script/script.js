@@ -23,7 +23,7 @@ document.querySelector('.buttons').addEventListener('click', (e) => {
     let inputs = e.target.innerText;
 
     if (inputs === 'C') {
-        display.value = "";
+        display.value = "0";
     }else if (inputs === '<-'){
         display.value = display.value.slice(0, -1);
     } else if (inputs === '=') {
