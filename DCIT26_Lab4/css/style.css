@@ -45,3 +45,15 @@ button.equals{
     grid-column: span 2;
     background-color: orange;
 }
+
+.guide-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: orange; 
+    margin-top: 1rem;
+    padding: 20px;
+    font-size: x-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
