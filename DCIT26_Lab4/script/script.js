@@ -1,5 +1,4 @@
 const display = document.querySelector('.display');
-
 let resetDisplay = false;
 
 display.addEventListener("input", () => {
@@ -11,39 +10,31 @@ const buttons = [
 ];
 
 let buttonHTML = "";
-
 buttons.forEach((button) => {
-
-    buttonHTML += `<button class=${button === "=" ? "equals": ""}>${button}</button>`;
+    buttonHTML += `<button class="${button === "=" ? "equals" : ""}">${button}</button>`;
 });
-
 document.querySelector('.buttons').innerHTML = buttonHTML;
 
-document.querySelector('.buttons').addEventListener('click', (e) => {
-    if (e.target.tagName !== 'BUTTON') return;
-
-    let inputs = e.target.innerText;
-
+function handleInput(inputs) {
     if (inputs === 'C') {
         display.value = "0";
         resetDisplay = false;
-    }else if (inputs === 'Del'){
+    } else if (inputs === 'Del') {
         display.value = display.value.slice(0, -1);
+        if (display.value === "") display.value = "0";
     } else if (inputs === '=') {
         try {
             let result = eval(display.value);
-
-            if (!isFinite(result)){
-                display.value = "Error"
-            }else{
+            if (!isFinite(result)) {
+                display.value = "Error";
+            } else {
                 display.value = result;
                 resetDisplay = true;
             }
-
         } catch {
-            display.value = "Error"
+            display.value = "Error";
         }
-    }else{
+    } else {
         const isOperator = ["+", "-", "*", "/", "%"].includes(inputs);
 
         if (resetDisplay) {
@@ -54,12 +45,29 @@ document.querySelector('.buttons').addEventListener('click', (e) => {
                 resetDisplay = false;
             }
         }
+
         if (display.value === "0" && !isOperator) {
             display.value = inputs;
         } else {
             display.value += inputs;
         }
     }
+}
+
+document.querySelector('.buttons').addEventListener('click', (e) => {
+    if (e.target.tagName !== 'BUTTON') return;
+    handleInput(e.target.innerText);
 });
 
+window.addEventListener('keydown', (e) => {
+    let key = e.key;
 
+    if (key === 'Enter') key = '=';
+    if (key === 'Escape') key = 'C';
+    if (key === 'Backspace') key = 'Del';
+
+    if (buttons.includes(key)) {
+        e.preventDefault();
+        handleInput(key);
+    }
+});
