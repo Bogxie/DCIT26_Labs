@@ -33,7 +33,7 @@ let accordionHtml = "";
 resumes.forEach((resume) => {
     accordionHtml += `
         <div class="accordion-item">
-            <button class="accordion">${resume.label}</button>
+            <button class="accordion">${resume.label}<span class="arrow">▼</span> </button>
             <div class="panel">
                 <ul>
                  ${resume.content.map(item => `<li>${item}</li>`).join("")}
@@ -51,6 +51,8 @@ accordion.addEventListener('click', (e) => {
     const button = e.target.closest('.accordion');
     if (!button) return;
 
+    button.classList.toggle('active');
+
     const panel = button.nextElementSibling;
 
     if (panel.style.display === "block") {
@@ -59,3 +61,4 @@ accordion.addEventListener('click', (e) => {
         panel.style.display = "block";
     }
 });
+
