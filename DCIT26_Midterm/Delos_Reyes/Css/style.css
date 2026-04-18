@@ -318,6 +318,8 @@ h2{
 }
 
 .accordion-item .accordion {
+    display: flex;
+    justify-content: space-between;
     background-color: #7d0000;
     color: #00bdd6;
     cursor: pointer;
@@ -330,6 +332,11 @@ h2{
     font-weight: bold;
     border-radius: 10px;
     transition: 0.4s;
+}
+
+.accordion-item .accordion:hover {
+    background-color: #a30000; 
+    letter-spacing: 1px; 
 }
 
 .panel ul{
@@ -350,6 +357,14 @@ h2{
     padding: 0 18px;
 }
 
+.arrow {
+    display: inline-block; 
+    margin-left: 10px;
+    transition: transform 0.3s ease; 
+}
+.accordion.active .arrow {
+    transform: rotate(180deg); /* Paikutin ng 180 degrees */
+}
 
 button a{
     display: flex;
